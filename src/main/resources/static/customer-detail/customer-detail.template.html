@@ -1,0 +1,31 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <p>{{$ctrl.customer.lastName}}</p>
+
+      <p>{{$ctrl.customer.firstName}}</p>
+
+      <select name="status" ng-model="$ctrl.customer.status">
+        <option value="Prospective">Prospective</option>
+        <option value="Current">Current</option>
+        <option value="NonActive">NonActive</option>
+      </select>
+
+      <button type="submit" ng-click="$ctrl.updateStatus($ctrl.customer.status)">Update Status</button>
+
+      <input name="note" ng-model="$ctrl.newNote"/>
+      <button type="submit" ng-click="$ctrl.addNote($ctrl.customer.id, $ctrl.newNote)">Add Note</button>
+
+    </div>
+
+    <div class="col-md-10">
+      <ul class="customer">
+        <li ng-repeat="note in $ctrl.notes" class="thumbnail customer-list-item">
+          <input name="note" ng-model="note.note"/>
+          <button type="submit" ng-click="$ctrl.updateNote($ctrl.customer.id, note.id, note.note)">Update</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+

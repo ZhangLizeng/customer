@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-2">
+      <!--Sidebar content-->
+
+      <p>
+        Search:
+        <input ng-model="$ctrl.query" />
+      </p>
+
+      <p>
+        Sort by:
+        <select ng-model="$ctrl.orderProp">
+          <option value="id">ID</option>
+          <option value="fisrtName">First Name</option>
+          <option value="lastName">Last Name</option>
+        </select>
+      </p>
+
+      <p>
+        Create new customer:
+
+
+        <div>First Name:</div>
+        <input ng-model="$ctrl.firstName"/>
+
+        <div>Last Name:</div>
+        <input ng-model="$ctrl.lastName"/>
+
+        <div>
+          <button type="submit" ng-click="$ctrl.addCustomer($ctrl.firstName, $ctrl.lastName)">Create Customer</button>
+        </div>
+      </p>
+
+    </div>
+    <div class="col-md-10">
+      <!--Body content-->
+
+      <ul class="customers">
+        <li ng-repeat="customer in $ctrl.customers | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+            class="thumbnail customer-list-item">
+          <a href="#!/customers/{{customer.id}}">{{customer.lastName}}</a>
+          <p>{{customer.firstName}}</p>
+          <p>{{customer.status}}</p>
+          <p>{{customer.gmtCreate}}</p>
+        </li>
+      </ul>
+
+    </div>
+  </div>
+</div>
